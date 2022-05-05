@@ -26,10 +26,9 @@ def calc_stones(stones,health,stone_cache):
     elif health < 0:
         stone_cache[health] = inf
     else:
-        chosen = []
-        for i in stones:
-            chosen.append(calc_stones(stones,health - i,stone_cache))
-        stone_cache[health] = min(chosen)+1
+        options = []
+        for i in stones: options.append(calc_stones(stones,health - i,stone_cache))
+        stone_cache[health] = min(options)+1
             
     return calc_stones(stones,health,stone_cache)
 # Input: array (of ints) of st one damage values, and dragon health value (int)
